@@ -13,8 +13,19 @@ class EjercicioListas {
   */
   def repetirListas(lista: List[Int], n: Int): List[List[Int]] = {
     var listaRepetida : List[List[Int]] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+    if (n < 0) {
+      throw new IllegalArgumentException("n no puede ser negativo")
+    }else{
+      for (i <- 1 to lista.size) {
+        var listaAux: List[Int] = List()
+        for (j <- 1 to n) {
+          listaAux = listaAux :+ lista(i - 1)
+        }
+        listaRepetida = listaRepetida :+ listaAux
+
+      }
+    }
+    listaRepetida
   }
   /*
   * Punto 3: Filtrar listas
@@ -28,7 +39,45 @@ class EjercicioListas {
   def filtrarListas(criterioIn: String, n: Int, lista: List[Int]) : List[Int] = {
     var criterio : String = criterioIn.toLowerCase()
     var listaFiltrada : List[Int] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+    if (criterio == "mayor"){
+      for (i <- 1 to lista.size){
+        if (lista(i-1) > n){
+          listaFiltrada = listaFiltrada :+ lista(i-1)
+        }
+      }
+    }else if (criterio == "menor"){
+      for (i <- 1 to lista.size){
+        if (lista(i-1) < n){
+          listaFiltrada = listaFiltrada :+ lista(i-1)
+        }
+      }
+    }else if (criterio == "mayoroigual"){
+      for (i <- 1 to lista.size){
+        if (lista(i-1) >= n){
+          listaFiltrada = listaFiltrada :+ lista(i-1)
+        }
+      }
+    }else if (criterio == "igual"){
+      for (i <- 1 to lista.size){
+        if (lista(i-1) == n){
+          listaFiltrada = listaFiltrada :+ lista(i-1)
+        }
+      }
+    }else if (criterio == "diferente"){
+      for (i <- 1 to lista.size){
+        if (lista(i-1) != n){
+          listaFiltrada = listaFiltrada :+ lista(i-1)
+        }
+      }
+    }else if (criterio == "menoroigual"){
+      for (i <- 1 to lista.size) {
+        if (lista(i - 1) <= n) {
+          listaFiltrada = listaFiltrada :+ lista(i - 1)
+        }
+      }
+    }else{
+      throw new IllegalArgumentException("El criterio no es válido")
+    }
+    listaFiltrada
   }
 }
